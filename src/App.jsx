@@ -6,9 +6,10 @@ import TodoItem from './components/Todoitem'
 
 function App() {
   const [todos, settodos] = useState([])
-
+  
+  //here todo is an object which contains id, title, completed
   const addtodo = (todo) => {
-    settodos((prev) => [{ id: Date.now(), ...todo }, ...prev])
+    settodos((prev) => [todo, ...prev])
   }
 
   const edittodo = (id, todo) => {
@@ -20,7 +21,7 @@ function App() {
   }
 
   const toggletodo = (id) => {
-    settodos((prev) => prev.map((prevtodo) => prevtodo.id === id ? { ...prevtodo, id: id, completed: !prevtodo.completed } : prevtodo))
+    settodos((prev) => prev.map((prevtodo) => prevtodo.id === id ? { ...prevtodo, completed: !prevtodo.completed } : prevtodo))
   }
 
   //to get access of todos array from the local storage
